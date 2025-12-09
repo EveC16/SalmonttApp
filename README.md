@@ -13,24 +13,19 @@ una lista de objetos hacieno uso de herencia, polimorfismo e instanceof.
 
 ### Estructura general del proyecto
 
-src 
-
--> cl.samontt
-
+src
+-cl.samontt
 -> data  
-GestorDatos "Contiene la lista de objetos"
-GestorUnidades "Recorre la lista usando instanceof"
-
-->model
-CentroCultivo "Hereda de UnidadOperativa"
-PlantaProceso "Hereda de UnidadOperativa"
-UnidadOperativa "Clase super"
-
-->ui
-ConsolaUI "Se encarga del formato de la información"
-Main "Inicializa la app"
-
-->README.md
+- GestorDatos "Contiene la lista de objetos"
+- GestorUnidades "Recorre la lista usando instanceof"
+-> model
+- CentroCultivo "Hereda de UnidadOperativa"
+- PlantaProceso "Hereda de UnidadOperativa"
+- UnidadOperativa "Clase super"
+-> ui
+- ConsolaUI "Se encarga del formato de la información"
+- Main "Inicializa la app"
+-> README.md
 
 ### Instrucciones para clonar y ejecutar el proyecto
 
