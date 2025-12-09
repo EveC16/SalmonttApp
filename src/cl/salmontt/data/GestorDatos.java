@@ -1,69 +1,28 @@
 package cl.salmontt.data;
 
-import cl.salmontt.model.CentroCultivo;
+/**
+ * CONTIENE UNA LISTA DE 5 UNIDADES OPERATIVAS DE TIPO "CENTRO CULTIVO" Y "PLANTA PROCESO"
+ */
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import cl.salmontt.model.CentroCultivo;
+import cl.salmontt.model.PlantaProceso;
+import cl.salmontt.model.UnidadOperativa;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GestorDatos {
 
-    public List<CentroCultivo> cargarCentros (String nombreResources){
+    private List<UnidadOperativa> listaUnidades = new ArrayList<>();
 
-        List<CentroCultivo> listaCentros = new ArrayList<>();
+    public List<UnidadOperativa> getListaUnidades() {
 
-        // CARGA EL ARCHIVO DESDE EL CLASSPATH
+        listaUnidades.add(new PlantaProceso("Virgo", "Puerto Montt", 8000));
+        listaUnidades.add(new CentroCultivo("Escorpio", "Río Negro", "Del Mar Negro"));
+        listaUnidades.add(new PlantaProceso("Libra", "San Pablo", 5600));
+        listaUnidades.add(new CentroCultivo("Capricornio", "Frutillar", "Rosado"));
+        listaUnidades.add(new CentroCultivo("Acuario", "Fresia", "Oncorhynchus Masou"));
 
-        ClassLoader classLoader = getClass().getClassLoader();
-
-        try {
-            InputStream resource = classLoader.getResourceAsStream(nombreResources);
-
-            if (resource == null) {
-                System.err.println("No se pudo obtener el archivo " + nombreResources);
-                return listaCentros;
-            }
-
-            // USA EL BUFFERED READER
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resource));
-                String linea;
-                int numeroLinea = 0;
-
-                while ((linea = bufferedReader.readLine()) != null) {
-                    numeroLinea++;
-                    if (linea.trim().isEmpty()) continue;
-
-                    // SEPARA POR ;
-                    String[] partes = linea.split(";");
-                    if (partes.length != 3) {
-                        System.err.println("Linea " + numeroLinea + " no valida");
-                        continue;
-                    }
-
-                    String nombre = partes[0].trim();
-                    String comuna = partes[1].trim();
-                    String toneladasProducida = partes[2].trim();
-
-                    try {
-                        int toneladasProducidas = Integer.parseInt(toneladasProducida);
-                        CentroCultivo centroCultivo = new CentroCultivo();
-                        centroCultivo.setNombre(nombre);
-                        centroCultivo.setComuna(comuna);
-                        centroCultivo.setToneladasProducidas(toneladasProducidas);
-                        listaCentros.add(centroCultivo);
-                    }catch(NumberFormatException e){
-                        System.err.println("Error de formato numerico " + numeroLinea +  " no es un numero entero");
-                    }
-                }
-            } catch (Exception e) {
-                System.err.println("Ocurrio un error");
-            }
-        } catch (NullPointerException e){
-        }
-        return listaCentros;
+    return listaUnidades;
     }
 }

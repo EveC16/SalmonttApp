@@ -1,54 +1,32 @@
 package cl.salmontt.model;
 
 /**
- * REPRESENTA UN CENTRO CULTIVO CON ATRIBUTOS COMO NOMBRE, COMUNA Y TONELADAS PRODUCIDAS
+ * REPRESENTA UN CENTRO CULTIVO Y EXTIENDE DE LA CLASE UNIDAD OPERATIVA, HEREDA SUS ATRIBUTOS "NOMBRE Y COMUNA"
+ *  Y TIENE COMO UNICO ATRIBUTO PROPIO "ESPECIE"
+ * SOBREESCRIBE EL METODO MOSTRAR INFORMACIÓN DE LA CLASE SUPER
  */
 
-public class CentroCultivo {
+public class CentroCultivo extends UnidadOperativa{
 
-    String nombre;
-    String comuna;
-    int toneladasProducidas;
+    private String especie;
 
-    public CentroCultivo() {
+    public CentroCultivo(String nombre, String comuna, String especie) {
+        super(nombre, comuna);
+        this.especie = especie;
     }
 
-    public CentroCultivo(String nombre, String comuna, int toneladasProducidas) {
-        this.nombre = nombre;
-        this.comuna = comuna;
-        this.toneladasProducidas = toneladasProducidas;
+    public String getespecie() {
+        return especie;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setespecie(String especie) {
+        this.especie = especie;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getComuna() {
-        return comuna;
-    }
-
-    public void setComuna(String comuna) {
-        this.comuna = comuna;
-    }
-
-    public double getToneladasProducidas() {
-        return toneladasProducidas;
-    }
-
-    public void setToneladasProducidas(int toneladasProducidas) {
-        this.toneladasProducidas = toneladasProducidas;
-    }
-
+    // SOBREESCRITURA DE METODO DE SUPER
     @Override
-    public String toString() {
-        return "CentroCultivo{" +
-                "Nombre del Centro: '" + nombre + '\'' +
-                ", Comuna: '" + comuna + '\'' +
-                ", Toneladas Producidas: '" + toneladasProducidas +
-                '}';
+    public void mostrarInformacion(){
+        System.out.println("Nombre: " + getNombre() + ", comuna: " + getComuna() +
+                ", especide de salmón:  " + especie);
     }
 }

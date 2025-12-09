@@ -1,22 +1,19 @@
 package cl.salmontt.ui;
 
-import cl.salmontt.data.GestorDatos;
-import cl.salmontt.model.CentroCultivo;
+/**
+ * CLASE PRINCIPAL RESPONSABLE DE INICIALIZAR LA APP DESDE LOS METODOS DE LAS CLASES "CONSOLA UI" Y "GESTOR UNIDADES"
+ */
 
-import java.util.ArrayList;
-import java.util.List;
+import cl.salmontt.data.GestorUnidades;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        GestorDatos gestorDatos = new GestorDatos();
+        ConsolaUI.mostrarEncabezado();
 
-        List<CentroCultivo> listaCentros = gestorDatos.cargarCentros("centros.txt");
+        GestorUnidades gestorUnidades = new GestorUnidades();
+        gestorUnidades.mostrarUnidades();
 
-        System.out.println("===========SUCURSALES===========");
-        for(CentroCultivo centroCultivo : listaCentros){
-            System.out.println(centroCultivo);
-        }
     }
 }
